@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace hr_management_api.dbcontext
+namespace HR_Management_API.DBContext
 {
-    public class data_dbcontext : DbContext
+    public class Data_DBContext: DbContext
     {
-        public data_dbcontext(DbContextOptions dbcontextoptions) : base(dbcontextoptions)
+        public Data_DBContext(DbContextOptions<Data_DBContext> dbContextOptions) : base(dbContextOptions)
         {
-        }
 
+        }
     }
 }
