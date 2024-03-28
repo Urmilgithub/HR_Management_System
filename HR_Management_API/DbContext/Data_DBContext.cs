@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HR_Management_API.Models.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace HR_Management_API.DBContext
 {
@@ -8,5 +9,6 @@ namespace HR_Management_API.DBContext
         {
 
         }
+        public DbSet<Employee> Employees { get; set; }
     }
 }
