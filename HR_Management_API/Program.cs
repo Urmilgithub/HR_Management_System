@@ -1,4 +1,5 @@
 using HR_Management_API.DBContext;
+using HR_Management_API.Mapper;
 using HR_Management_API.Models.Domain;
 using HR_Management_API.Models.DTO;
 using HR_Management_API.Repository;
@@ -20,6 +21,8 @@ builder.Services.AddDbContext<Data_DBContext>(options
     => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IEmployeeRepository, EmployeeService>();
+
+builder.Services.AddAutoMapper(typeof(MapperProfiles));
 
 var app = builder.Build();
 
