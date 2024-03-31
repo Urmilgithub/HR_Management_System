@@ -1,4 +1,8 @@
 using HR_Management_API.DBContext;
+using HR_Management_API.Models.Domain;
+using HR_Management_API.Models.DTO;
+using HR_Management_API.Repository;
+using HR_Management_API.Service;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -14,6 +18,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<Data_DBContext>(options
     => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IEmployeeRepository, EmployeeService>();
 
 var app = builder.Build();
 
