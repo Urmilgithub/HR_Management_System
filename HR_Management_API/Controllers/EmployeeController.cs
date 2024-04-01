@@ -26,5 +26,16 @@ namespace HR_Management_API.Controllers
             var employeeDomain = await employeeRepository.GetAllAsync();
             return Ok(mapper.Map<List<EmployeeDTO>>(employeeDomain));
         }
+
+        [HttpGet("GetEmployeeById")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var employeeDomain = await employeeRepository.GetEmployeeById(id);
+            if(employeeDomain == null)
+            {
+                return NotFound();
+            }
+            return Ok(mapper.Map<EmployeeDTO>(employeeDomain));
+        }
     }
 }
