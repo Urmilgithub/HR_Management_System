@@ -10,6 +10,7 @@ namespace HR_Management_API.Mapper
         public MapperProfiles()
         {
             CreateMap<Employee, EmployeeDTO>().ReverseMap();
+            CreateMap<AddEmployeeDTO, Employee>().ReverseMap();
         }   
     }
 }
