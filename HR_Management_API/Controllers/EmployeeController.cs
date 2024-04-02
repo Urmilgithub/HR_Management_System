@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HR_Management_API.Models.Domain;
 using HR_Management_API.Models.DTO;
 using HR_Management_API.Repository;
 using Microsoft.AspNetCore.Http;
@@ -35,6 +36,14 @@ namespace HR_Management_API.Controllers
             {
                 return NotFound();
             }
+            return Ok(mapper.Map<EmployeeDTO>(employeeDomain));
+        }
+
+        [HttpPost("AddEmployee")]
+        public async Task<IActionResult> AddEmployee(AddEmployeeDTO addEmployeeDTO)
+        {
+            var employeeDomain = mapper.Map<Employee>(addEmployeeDTO);
+            await employeeRepository.AddEmployee(employeeDomain);
             return Ok(mapper.Map<EmployeeDTO>(employeeDomain));
         }
     }
