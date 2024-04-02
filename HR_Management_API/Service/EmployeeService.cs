@@ -14,6 +14,13 @@ namespace HR_Management_API.Service
             dBContext = _dBContext;
         }
 
+        public async Task<Employee> AddEmployee(Employee employee)
+        {
+            await dBContext.AddAsync(employee);
+            await dBContext.SaveChangesAsync();
+            return employee;
+        }
+
         public async Task<List<Employee>> GetAllAsync()
         {
             return await dBContext.Employees.ToListAsync();
