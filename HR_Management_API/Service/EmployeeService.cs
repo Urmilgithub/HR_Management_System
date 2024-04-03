@@ -30,5 +30,25 @@ namespace HR_Management_API.Service
         {
             return await dBContext.Employees.FirstOrDefaultAsync(x => x.EmployeeId == id);
         }
+
+        public async Task<Employee?> UpdateEmployeeById(int id, Employee employee)
+        {
+            var employeeDomain = await dBContext.Employees.FirstOrDefaultAsync(x => x.EmployeeId == id);
+            if(employeeDomain == null)
+            {
+                return null;
+            }
+
+            employeeDomain.EmployeeId = employee.EmployeeId;
+            employeeDomain.FirstName = employee.FirstName;
+            employeeDomain.LastName = employeeDomain.LastName;
+            employeeDomain.Email = employee.Email;
+            employeeDomain.Contact = employee.Contact;
+            employeeDomain.HireDate = employee.HireDate;
+            employeeDomain.Salary = employee.Salary;
+
+            await dBContext.SaveChangesAsync();
+            return employeeDomain;
+        }
     }
 }
