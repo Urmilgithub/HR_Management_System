@@ -46,5 +46,18 @@ namespace HR_Management_API.Controllers
             await employeeRepository.AddEmployee(employeeDomain);
             return Ok(mapper.Map<EmployeeDTO>(employeeDomain));
         }
+
+        [HttpPut("UpdateEmployee")]
+        public async Task<IActionResult> UpdateEmployee(UpdateEmployeeDTO updateEmployeeDTO, int id)
+        {
+            var employeeDomain = mapper.Map<Employee>(updateEmployeeDTO);
+            employeeDomain = await employeeRepository.UpdateEmployeeById(id, employeeDomain);
+            if(employeeDomain == null)
+            {
+                return NotFound();
+            }
+            return Ok(mapper.Map<EmployeeDTO>(employeeDomain));
+            
+        }
     }
 }
