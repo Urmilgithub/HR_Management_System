@@ -21,6 +21,20 @@ namespace HR_Management_API.Service
             return employee;
         }
 
+        public async Task<Employee?> DeleteEmployeeById(int id)
+        {
+            var employeeDomain = await dBContext.Employees.FirstOrDefaultAsync(x => x.EmployeeId == id);
+            if(employeeDomain == null)
+            {
+                return null;
+            }
+
+            dBContext.Employees.Remove(employeeDomain);
+            await dBContext.SaveChangesAsync();
+            return employeeDomain;
+               
+        }
+
         public async Task<List<Employee>> GetAllAsync()
         {
             return await dBContext.Employees.ToListAsync();
