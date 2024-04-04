@@ -8,5 +8,6 @@ namespace HR_Management_API.Repository
         Task<Employee?> GetEmployeeById(int id);
         Task<Employee> AddEmployee(Employee employee);
         Task<Employee?> UpdateEmployeeById(int id, Employee employee);
+        Task<Employee?> DeleteEmployeeById(int id);
     }
 }
