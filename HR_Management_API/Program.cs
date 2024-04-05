@@ -21,6 +21,7 @@ builder.Services.AddDbContext<Data_DBContext>(options
     => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IEmployeeRepository, EmployeeService>();
+builder.Services.AddScoped<IJobRepository, Jobservice>();
 
 builder.Services.AddAutoMapper(typeof(MapperProfiles));
 
