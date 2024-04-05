@@ -1,6 +1,7 @@
 ﻿using HR_Management_API.DBContext;
 using HR_Management_API.Models.Domain;
 using HR_Management_API.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace HR_Management_API.Service
 {
