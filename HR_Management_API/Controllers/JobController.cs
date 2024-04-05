@@ -25,5 +25,16 @@ namespace HR_Management_API.Controllers
             var jobDomain = await jobRepository.GetAllJobs();
             return Ok(mapper.Map<JobDTO>(jobDomain));
         }
+
+        [HttpGet("GetJobBy_Id")]
+        public async Task<IActionResult> GetJobbyId(int id)
+        {
+            var jobDomain = await jobRepository.GetJobById(id);
+            if(jobDomain == null)
+            {
+                return NotFound();
+            }
+            return Ok(mapper.Map<JobDTO>(jobDomain));
+        }
     }
 }
