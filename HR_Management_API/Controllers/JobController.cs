@@ -27,7 +27,7 @@ namespace HR_Management_API.Controllers
         }
 
         [HttpGet("GetJobBy_Id")]
-        public async Task<IActionResult> GetJobbyId(int id)
+        public async Task<IActionResult> GetJobById(int id)
         {
             var jobDomain = await jobRepository.GetJobById(id);
             if(jobDomain == null)
