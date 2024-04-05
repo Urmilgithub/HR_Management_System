@@ -10,5 +10,6 @@ namespace HR_Management_API.DBContext
 
         }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Job> Jobs { get; set; }
     }
 }
