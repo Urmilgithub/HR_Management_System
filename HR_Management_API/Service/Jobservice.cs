@@ -17,5 +17,10 @@ namespace HR_Management_API.Service
         {
             return await dBContext.Jobs.ToListAsync();
         }
+
+        public async Task<Job?> GetJobById(int id)
+        {
+            return await dBContext.Jobs.FirstOrDefaultAsync(x => x.JobId == id);
+        }
     }
 }
