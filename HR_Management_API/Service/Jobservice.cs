@@ -13,6 +13,14 @@ namespace HR_Management_API.Service
         {
             dBContext = _dBContext;
         }
+
+        public async Task<Job> AddJob(Job job)
+        {
+            await dBContext.Jobs.AddAsync(job);
+            await dBContext.SaveChangesAsync();
+            return job;
+        }
+
         public async Task<List<Job>> GetAllJobs()
         {
             return await dBContext.Jobs.ToListAsync();
