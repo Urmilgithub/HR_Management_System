@@ -6,6 +6,6 @@ namespace HR_Management_API.Repository
     {
         Task<List<Job>> GetAllJobs();
         Task<Job?> GetJobById(int id);
-        Task<Job> AddJob(Job job);
+        Task<Job> AddJobs(Job job);
     }
 }

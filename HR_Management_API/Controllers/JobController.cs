@@ -42,7 +42,7 @@ namespace HR_Management_API.Controllers
         public async Task<IActionResult> AddJobs(AddJobDTO addJobDTO)
         {
             var jobDomain = mapper.Map<Job>(addJobDTO);
-            await jobRepository.AddJob(jobDomain);
+            await jobRepository.AddJobs(jobDomain);
             return Ok(mapper.Map<JobDTO>(jobDomain));
         }
     }
