@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.Configuration.Annotations;
 using HR_Management_API.Models.Domain;
 using HR_Management_API.Models.DTO;
 using HR_Management_API.Repository;
@@ -43,6 +44,18 @@ namespace HR_Management_API.Controllers
         {
             var jobDomain = mapper.Map<Job>(addJobDTO);
             await jobRepository.AddJobs(jobDomain);
+            return Ok(mapper.Map<JobDTO>(jobDomain));
+        }
+
+        [HttpPut("UpdateJobById")]
+        public async Task<IActionResult> Updatejobs(UpdateEmployeeDTO updateEmployeeDTO, int id)
+        {
+            var jobDomain = mapper.Map<Job>(updateEmployeeDTO);
+            jobDomain = await jobRepository.UpdateJobDTO(id, jobDomain);
+            if(jobDomain == null)
+            {
+                return NotFound();
+            }
             return Ok(mapper.Map<JobDTO>(jobDomain));
         }
     }
