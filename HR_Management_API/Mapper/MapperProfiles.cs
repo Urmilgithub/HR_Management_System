@@ -15,6 +15,7 @@ namespace HR_Management_API.Mapper
 
             CreateMap<Job, JobDTO>().ReverseMap();
             CreateMap<AddJobDTO, Job>().ReverseMap();
+            CreateMap<UpdateEmployeeDTO, Job>().ReverseMap();
         }   
     }
 }
