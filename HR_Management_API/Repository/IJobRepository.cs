@@ -1,4 +1,5 @@
 ﻿using HR_Management_API.Models.Domain;
+using HR_Management_API.Models.DTO;
 
 namespace HR_Management_API.Repository
 {
@@ -7,5 +8,6 @@ namespace HR_Management_API.Repository
         Task<List<Job>> GetAllJobs();
         Task<Job?> GetJobById(int id);
         Task<Job> AddJobs(Job job);
+        Task<Job?> UpdateJobDTO(int id, Job job);
     }
 }
