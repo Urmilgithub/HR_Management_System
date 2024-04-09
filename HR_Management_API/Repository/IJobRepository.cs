@@ -8,6 +8,6 @@ namespace HR_Management_API.Repository
         Task<List<Job>> GetAllJobs();
         Task<Job?> GetJobById(int id);
         Task<Job> AddJobs(Job job);
-        Task<Job?> UpdateJobDTO(int id, Job job);
+        Task<Job?> UpdateJob(int id, Job job);
     }
 }

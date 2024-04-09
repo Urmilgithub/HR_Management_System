@@ -31,7 +31,7 @@ namespace HR_Management_API.Service
             return await dBContext.Jobs.FirstOrDefaultAsync(x => x.JobId == id);
         }
 
-        public async Task<Job?> UpdateJobDTO(int id, Job job)
+        public async Task<Job?> UpdateJob(int id, Job job)
         {
             var jobDomain = await dBContext.Jobs.FirstOrDefaultAsync(x => x.JobId == id);
             if(jobDomain == null)

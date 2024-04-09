@@ -48,10 +48,10 @@ namespace HR_Management_API.Controllers
         }
 
         [HttpPut("UpdateJobById")]
-        public async Task<IActionResult> Updatejobs(UpdateEmployeeDTO updateEmployeeDTO, int id)
+        public async Task<IActionResult> UpdateJob(UpdateEmployeeDTO updateEmployeeDTO, int id)
         {
             var jobDomain = mapper.Map<Job>(updateEmployeeDTO);
-            jobDomain = await jobRepository.UpdateJobDTO(id, jobDomain);
+            jobDomain = await jobRepository.UpdateJob(id, jobDomain);
             if(jobDomain == null)
             {
                 return NotFound();
