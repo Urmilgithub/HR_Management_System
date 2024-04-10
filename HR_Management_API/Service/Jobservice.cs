@@ -21,6 +21,18 @@ namespace HR_Management_API.Service
             return job;
         }
 
+        public async Task<Job?> DeleteJob(int id)
+        {
+            var jobDomain = await dBContext.Jobs.FirstOrDefaultAsync(x => x.JobId == id);
+            if(jobDomain == null)
+            {
+                return null;
+            }
+            dBContext.Jobs.Remove(jobDomain);
+            await dBContext.SaveChangesAsync();
+            return jobDomain;
+        }
+
         public async Task<List<Job>> GetAllJobs()
         {
             return await dBContext.Jobs.ToListAsync();
