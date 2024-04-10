@@ -58,5 +58,16 @@ namespace HR_Management_API.Controllers
             }
             return Ok(mapper.Map<JobDTO>(jobDomain));
         }
+
+        [HttpDelete("DeleteJobById")]
+        public async Task<IActionResult> DeleteJob(int id)
+        {
+            var jobDomain = await jobRepository.DeleteJob(id);
+            if(jobDomain == null)
+            {
+                return NotFound();
+            }
+            return Ok(mapper.Map<JobDTO>(jobDomain));
+        }
     }
 }
