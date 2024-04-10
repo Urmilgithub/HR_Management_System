@@ -9,5 +9,6 @@ namespace HR_Management_API.Repository
         Task<Job?> GetJobById(int id);
         Task<Job> AddJobs(Job job);
         Task<Job?> UpdateJob(int id, Job job);
+        Task<Job?> DeleteJob(int id);
     }
 }
