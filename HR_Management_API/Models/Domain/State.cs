@@ -2,7 +2,7 @@
 
 namespace HR_Management_API.Models.Domain
 {
-    public class States
+    public class State
     {
         [Key]
         public int StateId { get; set; }
