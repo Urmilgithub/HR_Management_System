@@ -19,7 +19,7 @@ namespace HR_Management_API.Controllers
             mapper = _mapper;
         }
 
-        [HttpGet("Get_All_State_List")]
+        [HttpGet("GetAllStateList")]
         public async Task<IActionResult> GetAllState()
         {
             var stateDomain = await stateRepository.GetAllStates();
