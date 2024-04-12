@@ -37,5 +37,13 @@ namespace HR_Management_API.Controllers
             }
             return Ok(mapper.Map<StateDTO>(stateDomain));
         }
+
+        [HttpPost("AddState")]
+        public async Task<IActionResult> AddState(AddStateDTO addStateDTO)
+        {
+            var stateDomain = mapper.Map<State>(addStateDTO);
+            await stateRepository.AddStates(stateDomain);
+            return Ok(mapper.Map<StateDTO>(stateDomain));
+        }
     }
 }
