@@ -14,6 +14,12 @@ namespace HR_Management_API.Service
             dBContext = _dBContext;
         }
 
+        public async Task<State> AddStates(State state)
+        {
+           await dBContext.States.AddAsync(state);
+           await dBContext.SaveChangesAsync();
+           return state;
+        }
 
         public async Task<List<State>> GetAllStates()
         {
