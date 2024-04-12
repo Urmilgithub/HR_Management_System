@@ -35,7 +35,7 @@ namespace HR_Management_API.Controllers
             {
                 return NotFound();
             }
-            return Ok(mapper.Map<List<StateDTO>>(stateDomain));
+            return Ok(mapper.Map<StateDTO>(stateDomain));
         }
     }
 }
