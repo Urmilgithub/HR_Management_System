@@ -6,5 +6,6 @@ namespace HR_Management_API.Repository
     {
        Task<List<State>> GetAllStates();
        Task<State?> GetStateById(int id);
+       Task<State> AddStates(State state);
     }
 }
