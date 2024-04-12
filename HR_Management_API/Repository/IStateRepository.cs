@@ -8,5 +8,7 @@ namespace HR_Management_API.Repository
        Task<State?> GetStateById(int id);
        Task<State> AddStates(State state);
        Task<State?> UpdateState(int id, State state);
+       Task<State?> DeleteStateById(int id);
+
     }
 }
