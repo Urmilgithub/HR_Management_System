@@ -57,5 +57,16 @@ namespace HR_Management_API.Controllers
             await stateRepository.UpdateState(id,stateDomain);
             return Ok(mapper.Map<StateDTO>(stateDomain));
         }
+
+        [HttpDelete("DeleteStateById")]
+        public async Task<IActionResult> DeleteStates(int id)
+        {
+            var stateDomain = await stateRepository.DeleteStateById(id);
+            if (stateDomain == null)
+            {
+                return NotFound();
+            }
+            return Ok(mapper.Map<StateDTO>(stateDomain));
+        }
     }
 }
