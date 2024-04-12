@@ -19,5 +19,10 @@ namespace HR_Management_API.Service
         {
             return await dBContext.States.ToListAsync();
         }
+
+        public async Task<State?> GetStateById(int id)
+        {
+            return await dBContext.States.FirstOrDefaultAsync(x => x.StateId == id);
+        }
     }
 }
