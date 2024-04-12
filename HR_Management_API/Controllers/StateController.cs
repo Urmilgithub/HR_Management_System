@@ -45,5 +45,17 @@ namespace HR_Management_API.Controllers
             await stateRepository.AddStates(stateDomain);
             return Ok(mapper.Map<StateDTO>(stateDomain));
         }
+
+        [HttpPut("updateState")]
+        public async Task<IActionResult> UpdateState(UpdateStateDTO updateStateDTO, int id)
+        {
+            var stateDomain = mapper.Map<State>(updateStateDTO);
+            if(stateDomain == null)
+            {
+                return NotFound();
+            }
+            await stateRepository.UpdateState(id,stateDomain);
+            return Ok(mapper.Map<StateDTO>(stateDomain));
+        }
     }
 }
