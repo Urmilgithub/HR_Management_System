@@ -31,7 +31,7 @@ namespace HR_Management_API.Service
             return await dBContext.States.FirstOrDefaultAsync(x => x.StateId == id);
         }
 
-        public async Task<State> UpdateState(int id, State state)
+        public async Task<State?> UpdateState(int id, State state)
         {
             var stateDomain = await dBContext.States.FirstOrDefaultAsync(x => x.StateId == id);
             if(stateDomain == null)
