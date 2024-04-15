@@ -23,6 +23,7 @@ namespace HR_Management_API.Mapper
 
             CreateMap<City, CityDTO>().ReverseMap();
             CreateMap<AddCityDTO, City>().ReverseMap();
+            CreateMap<UpdateCityDTO, CityDTO>().ReverseMap();
 
         }   
     }
