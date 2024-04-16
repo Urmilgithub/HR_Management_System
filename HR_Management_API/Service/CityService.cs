@@ -14,6 +14,11 @@ namespace HR_Management_API.Service
             dBContext = _dBContext;
         }
 
+        public async Task<City?> GetCityByIdAsync(int id)
+        {
+            return await dBContext.Cities.FirstOrDefaultAsync(x => x.CityId == id);
+        }
+
         public async Task<List<City>> GetCityListAsync()
         {
             return await dBContext.Cities.ToListAsync();
