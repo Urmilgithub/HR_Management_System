@@ -29,7 +29,7 @@ namespace HR_Management_API.Controllers
         [HttpGet("GetCityById")]
         public async Task<IActionResult> GetById(int id)
         {
-            var cityDomain = await cityRepository.GetCityListAsync();
+            var cityDomain = await cityRepository.GetCityByIdAsync(id);
             if(cityDomain == null)
             {
                 return NotFound();
