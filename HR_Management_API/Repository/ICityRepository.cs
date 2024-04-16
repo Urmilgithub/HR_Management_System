@@ -5,6 +5,6 @@ namespace HR_Management_API.Repository
     public interface ICityRepository
     {
         Task<List<City>> GetCityListAsync();
-        Task<City> GetCityByIdAsync();
+        Task<City?> GetCityByIdAsync(int id);
     }
 }
