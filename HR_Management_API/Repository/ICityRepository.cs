@@ -6,5 +6,6 @@ namespace HR_Management_API.Repository
     {
         Task<List<City>> GetCityListAsync();
         Task<City?> GetCityByIdAsync(int id);
+        Task<City> AddCityAsync(City city);
     }
 }
