@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HR_Management_API.Models.Domain;
 using HR_Management_API.Models.DTO;
 using HR_Management_API.Repository;
 using Microsoft.AspNetCore.Http;
@@ -34,6 +35,14 @@ namespace HR_Management_API.Controllers
             {
                 return NotFound();
             }
+            return Ok(mapper.Map<CityDTO>(cityDomain));
+        }
+
+        [HttpPost("AddCity")]
+        public async Task<IActionResult> AddCity(AddCityDTO addCityDTO)
+        {
+            var cityDomain = mapper.Map<City>(addCityDTO);               
+            await cityRepository.AddCityAsync(cityDomain);
             return Ok(mapper.Map<CityDTO>(cityDomain));
         }
     }
