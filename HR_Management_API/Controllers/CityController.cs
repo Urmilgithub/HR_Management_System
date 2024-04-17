@@ -45,5 +45,17 @@ namespace HR_Management_API.Controllers
             await cityRepository.AddCityAsync(cityDomain);
             return Ok(mapper.Map<CityDTO>(cityDomain));
         }
+
+        [HttpPut("UpdateCity")]
+        public async Task<IActionResult> UpdateCity(int id, UpdateCityDTO updateCityDTO)
+        {
+            var cityDomain = mapper.Map<City>(updateCityDTO);
+            if(cityDomain == null)
+            {
+                return NotFound();
+            }
+            await cityRepository.UpdateCityAsync(id, cityDomain);
+            return Ok(mapper.Map<CityDTO>(cityDomain));
+        }
     }
 }
