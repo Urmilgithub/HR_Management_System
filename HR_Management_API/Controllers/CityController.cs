@@ -57,5 +57,16 @@ namespace HR_Management_API.Controllers
             await cityRepository.UpdateCityAsync(id, cityDomain);
             return Ok(mapper.Map<CityDTO>(cityDomain));
         }
+
+        [HttpDelete("DeleteCity")]
+        public async Task<IActionResult> DeleteCity(int id)
+        {
+            var cityDomain = await cityRepository.DeleteCityByIdAsync(id);
+            if (cityDomain == null)
+            {
+                return NotFound();
+            }            
+            return Ok(mapper.Map<CityDTO>(cityDomain));
+        }
     }
 }
