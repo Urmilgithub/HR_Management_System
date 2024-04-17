@@ -21,6 +21,18 @@ namespace HR_Management_API.Service
             return city;
         }
 
+        public async Task<City?> DeleteCityByIdAsync(int id)
+        {
+            var cityDomain = await dBContext.Cities.FirstOrDefaultAsync(x => x.CityId == id);
+            if (cityDomain == null)
+            {
+                return null;
+            }
+            dBContext.Cities.Remove(cityDomain);
+            await dBContext.SaveChangesAsync();
+            return cityDomain;
+        }
+
         public async Task<City?> GetCityByIdAsync(int id)
         {
             return await dBContext.Cities.FirstOrDefaultAsync(x => x.CityId == id);
