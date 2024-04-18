@@ -23,7 +23,9 @@ builder.Services.AddDbContext<Data_DBContext>(options
 builder.Services.AddScoped<IEmployeeRepository, EmployeeService>();
 builder.Services.AddScoped<IJobRepository, Jobservice>();
 builder.Services.AddScoped<IStateRepository, StateService>();
+builder.Services.AddScoped<ICityRepository, CityService>();
 builder.Services.AddScoped<IDepartmentRepository, DepartmentService>();
+
 
 builder.Services.AddAutoMapper(typeof(MapperProfiles));
 

@@ -13,5 +13,6 @@ namespace HR_Management_API.DBContext
         public DbSet<Job> Jobs { get; set; }
         public DbSet<State> States { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<City> Cities { get; set; }
     }
 }
