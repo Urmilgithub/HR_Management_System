@@ -23,14 +23,14 @@ namespace HR_Management_API.Service
 
         public async Task<State?> DeleteStateById(int id)
         {
-            var stateDomain = await dBContext.States.FirstOrDefaultAsync(id);
+            var stateDomain = await dBContext.States.FirstOrDefaultAsync(x => x.StateId == id);
             if(stateDomain == null)
             {
                 return null;
             }
             dBContext.States.Remove(stateDomain);
             await dBContext.SaveChangesAsync();
-            return await stateDomain;
+            return stateDomain;
         }
 
         public async Task<List<State>> GetAllStates()
