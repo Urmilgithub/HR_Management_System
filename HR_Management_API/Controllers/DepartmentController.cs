@@ -24,7 +24,7 @@ namespace HR_Management_API.Controllers
         public async Task<IActionResult> GetDeptList()
         {
             var deptDomain = await departmentRepository.GetDepartmentListAsync();
-            return Ok(mapper.Map<DepartmentDTO>(deptDomain));
+            return Ok(mapper.Map<List<DepartmentDTO>>(deptDomain));
         }
 
         [HttpGet("GetDepartmentById")]
