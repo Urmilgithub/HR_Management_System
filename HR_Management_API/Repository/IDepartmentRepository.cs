@@ -7,6 +7,6 @@ namespace HR_Management_API.Repository
         Task<List<Department>> GetDepartmentListAsync();
         Task<Department?> GetDepartmentByIdAsync(int id);
         Task<Department> AddDepartmentAsync(Department department);
-        Task<Department?> UpdateDepartmentAsync(int id,Department department);
+        Task<Department?> UpdateDepartmentByIdAsync(int id,Department department);
     }
 }

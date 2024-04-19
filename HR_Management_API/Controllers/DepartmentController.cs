@@ -46,7 +46,7 @@ namespace HR_Management_API.Controllers
         public async Task<IActionResult> UpdateDeptById(int id, UpdateDepartmentDTO updateDepartmentDTO)
         {
             var deptDomain = mapper.Map<Department>(updateDepartmentDTO);
-            await departmentRepository.UpdateDepartmentAsync(id, deptDomain);
+            await departmentRepository.UpdateDepartmentByIdAsync(id, deptDomain);
             if (deptDomain == null)
             {
                 return NotFound();
