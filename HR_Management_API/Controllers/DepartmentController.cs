@@ -34,6 +34,14 @@ namespace HR_Management_API.Controllers
             return Ok(mapper.Map<DepartmentDTO>(deptDomain));
         }
 
+        [HttpPost("AddDepartment")]
+        public async Task<IActionResult> AddDepartment(AddDepartmentDTO addDepartmentDTO)
+        {
+            var deptDomain = mapper.Map<Department>(addDepartmentDTO);
+            await departmentRepository.AddDepartmentAsync(deptDomain);
+            return Ok(mapper.Map<DepartmentDTO>(deptDomain));
+        }
+
         [HttpPut("UpdateDepartmentById")]
         public async Task<IActionResult> UpdateDeptById(int id, UpdateDepartmentDTO updateDepartmentDTO)
         {
