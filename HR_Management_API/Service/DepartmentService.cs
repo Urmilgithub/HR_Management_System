@@ -21,6 +21,19 @@ namespace HR_Management_API.Service
             return department;
         }
 
+        public async Task<Department?> DeleteDepartmentByIdAsync(int id)
+        {
+            var deptDomain = await dBContext.Departments.FirstOrDefaultAsync(x => x.DeptId == id);
+            if(deptDomain == null)
+            {
+                return null;
+            }
+            
+            dBContext.Departments.Remove(deptDomain);
+            await dBContext.SaveChangesAsync();
+            return deptDomain;
+        }
+
         public async Task<Department?> GetDepartmentByIdAsync(int id)
         {
             return await dBContext.Departments.FirstOrDefaultAsync(x => x.DeptId == id);   
