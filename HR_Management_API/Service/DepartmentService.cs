@@ -30,5 +30,20 @@ namespace HR_Management_API.Service
         {
             return await dBContext.Departments.ToListAsync();
         }
+
+        public async Task<Department?> UpdateDepartmentAsync(int id, Department department)
+        {
+            var deptDomain = await dBContext.Departments.FirstOrDefaultAsync(x => x.DeptId == id);
+            if(deptDomain == null)
+            {
+                return null;
+            }
+            deptDomain.DeptId = department.DeptId;
+            deptDomain.DeptName = department.DeptName;
+            deptDomain.CityId = department.CityId;
+
+            await dBContext.SaveChangesAsync();
+            return department;                
+        }
     }
 }
