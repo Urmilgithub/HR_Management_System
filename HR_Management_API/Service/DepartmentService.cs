@@ -21,6 +21,19 @@ namespace HR_Management_API.Service
             return department;
         }
 
+        public async Task<Department?> DeleteDepartmentByIdAsync(int id)
+        {
+            var deptDomain = await dBContext.Departments.FirstOrDefaultAsync(x => x.DeptId == id);
+            if(deptDomain == null)
+            {
+                return null;
+            }
+            
+            dBContext.Departments.Remove(deptDomain);
+            await dBContext.SaveChangesAsync();
+            return deptDomain;
+        }
+
         public async Task<Department?> GetDepartmentByIdAsync(int id)
         {
             return await dBContext.Departments.FirstOrDefaultAsync(x => x.DeptId == id);   
@@ -29,6 +42,21 @@ namespace HR_Management_API.Service
         public async Task<List<Department>> GetDepartmentListAsync()
         {
             return await dBContext.Departments.ToListAsync();
+        }
+
+        public async Task<Department?> UpdateDepartmentByIdAsync(int id, Department department)
+        {
+            var deptDomain = await dBContext.Departments.FirstOrDefaultAsync(x => x.DeptId == id);
+            if(deptDomain == null)
+            {
+                return null;
+            }
+            deptDomain.DeptId = department.DeptId;
+            deptDomain.DeptName = department.DeptName;
+            deptDomain.CityId = department.CityId;
+
+            await dBContext.SaveChangesAsync();
+            return department;                
         }
     }
 }

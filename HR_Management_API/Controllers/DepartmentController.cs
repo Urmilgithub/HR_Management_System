@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HR_Management_API.Models.Domain;
 using HR_Management_API.Models.DTO;
 using HR_Management_API.Repository;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +31,37 @@ namespace HR_Management_API.Controllers
         public async Task<IActionResult> GetDeptById(int id)
         {
             var deptDomain = await departmentRepository.GetDepartmentByIdAsync(id);
+            return Ok(mapper.Map<DepartmentDTO>(deptDomain));
+        }
+
+        [HttpPost("AddDepartment")]
+        public async Task<IActionResult> AddDepartment(AddDepartmentDTO addDepartmentDTO)
+        {
+            var deptDomain = mapper.Map<Department>(addDepartmentDTO);
+            await departmentRepository.AddDepartmentAsync(deptDomain);
+            return Ok(mapper.Map<DepartmentDTO>(deptDomain));
+        }
+
+        [HttpPut("UpdateDepartmentById")]
+        public async Task<IActionResult> UpdateDeptById(int id, UpdateDepartmentDTO updateDepartmentDTO)
+        {
+            var deptDomain = mapper.Map<Department>(updateDepartmentDTO);
+            await departmentRepository.UpdateDepartmentByIdAsync(id, deptDomain);
+            if (deptDomain == null)
+            {
+                return NotFound();
+            }
+            return Ok(mapper.Map<DepartmentDTO>(deptDomain));
+        }
+
+        [HttpDelete("DeleteDepartmentById")]
+        public async Task<IActionResult> DeleteDeptById(int id)
+        {
+            var deptDomain = await departmentRepository.DeleteDepartmentByIdAsync(id);
+            if (deptDomain == null)
+            {
+                return NotFound();
+            }
             return Ok(mapper.Map<DepartmentDTO>(deptDomain));
         }
     }
