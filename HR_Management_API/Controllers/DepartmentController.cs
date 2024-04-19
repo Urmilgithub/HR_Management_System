@@ -53,5 +53,16 @@ namespace HR_Management_API.Controllers
             }
             return Ok(mapper.Map<DepartmentDTO>(deptDomain));
         }
+
+        [HttpDelete("DeleteDepartmentById")]
+        public async Task<IActionResult> DeleteDeptById(int id)
+        {
+            var deptDomain = await departmentRepository.DeleteDepartmentByIdAsync(id);
+            if (deptDomain == null)
+            {
+                return NotFound();
+            }
+            return Ok(mapper.Map<DepartmentDTO>(deptDomain));
+        }
     }
 }
