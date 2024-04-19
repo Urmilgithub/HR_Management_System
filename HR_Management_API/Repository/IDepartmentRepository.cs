@@ -5,6 +5,6 @@ namespace HR_Management_API.Repository
     public interface IDepartmentRepository
     {
         Task<List<Department>> GetDepartmentListAsync();
-        Task<Department?> GetDepartmentById(int id);
+        Task<Department?> GetDepartmentByIdAsync(int id);
     }
 }

@@ -29,7 +29,7 @@ namespace HR_Management_API.Controllers
         [HttpGet("GetDepartmentById")]
         public async Task<IActionResult> GetDeptById(int id)
         {
-            var deptDomain = await departmentRepository.GetDepartmentById(id);
+            var deptDomain = await departmentRepository.GetDepartmentByIdAsync(id);
             return Ok(mapper.Map<DepartmentDTO>(deptDomain));
         }
     }
