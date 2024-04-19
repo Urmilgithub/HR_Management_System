@@ -46,7 +46,7 @@ namespace HR_Management_API.Controllers
             return Ok(mapper.Map<CityDTO>(cityDomain));
         }
 
-        [HttpPut("UpdateCity")]
+        [HttpPut("UpdateCityById")]
         public async Task<IActionResult> UpdateCity(int id, UpdateCityDTO updateCityDTO)
         {
             var cityDomain = mapper.Map<City>(updateCityDTO);
@@ -58,7 +58,7 @@ namespace HR_Management_API.Controllers
             return Ok(mapper.Map<CityDTO>(cityDomain));
         }
 
-        [HttpDelete("DeleteCity")]
+        [HttpDelete("DeleteCityById")]
         public async Task<IActionResult> DeleteCity(int id)
         {
             var cityDomain = await cityRepository.DeleteCityByIdAsync(id);

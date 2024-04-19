@@ -47,7 +47,7 @@ namespace HR_Management_API.Controllers
             return Ok(mapper.Map<EmployeeDTO>(employeeDomain));
         }
 
-        [HttpPut("UpdateEmployee")]
+        [HttpPut("UpdateEmployeeById")]
         public async Task<IActionResult> UpdateEmployee(UpdateEmployeeDTO updateEmployeeDTO, int id)
         {
             var employeeDomain = mapper.Map<Employee>(updateEmployeeDTO);
