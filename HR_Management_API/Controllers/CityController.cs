@@ -24,7 +24,7 @@ namespace HR_Management_API.Controllers
         public async Task<IActionResult> GetCity()
         {
             var cityDomain = await cityRepository.GetCityListAsync();
-            return Ok(mapper.Map<CityDTO>(cityDomain));
+            return Ok(mapper.Map<List<CityDTO>>(cityDomain));
         }
 
         [HttpGet("GetCityById")]
