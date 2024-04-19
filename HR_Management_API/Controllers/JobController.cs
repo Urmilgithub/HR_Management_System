@@ -48,7 +48,7 @@ namespace HR_Management_API.Controllers
         }
 
         [HttpPut("UpdateJobById")]
-        public async Task<IActionResult> UpdateJob(UpdateEmployeeDTO updateEmployeeDTO, int id)
+        public async Task<IActionResult> UpdateJobById(UpdateEmployeeDTO updateEmployeeDTO, int id)
         {
             var jobDomain = mapper.Map<Job>(updateEmployeeDTO);
             jobDomain = await jobRepository.UpdateJob(id, jobDomain);
@@ -60,7 +60,7 @@ namespace HR_Management_API.Controllers
         }
 
         [HttpDelete("DeleteJobById")]
-        public async Task<IActionResult> DeleteJob(int id)
+        public async Task<IActionResult> DeleteJobById(int id)
         {
             var jobDomain = await jobRepository.DeleteJob(id);
             if(jobDomain == null)
