@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HR_Management_API.Models.Domain;
 using HR_Management_API.Models.DTO;
 using HR_Management_API.Repository;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +31,18 @@ namespace HR_Management_API.Controllers
         public async Task<IActionResult> GetDeptById(int id)
         {
             var deptDomain = await departmentRepository.GetDepartmentByIdAsync(id);
+            return Ok(mapper.Map<DepartmentDTO>(deptDomain));
+        }
+
+        [HttpPut("UpdateDepartmentById")]
+        public async Task<IActionResult> UpdateDeptById(int id, UpdateDepartmentDTO updateDepartmentDTO)
+        {
+            var deptDomain = mapper.Map<Department>(updateDepartmentDTO);
+            await departmentRepository.UpdateDepartmentAsync(id, deptDomain);
+            if (deptDomain == null)
+            {
+                return NotFound();
+            }
             return Ok(mapper.Map<DepartmentDTO>(deptDomain));
         }
     }
